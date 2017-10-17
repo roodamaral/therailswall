@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<a href="/users/new" id="logout">Logout</a>
+<h3>Welcome, <%=@user.username %></h3>
+<%=@user.id %>
+
+<form action="messages" method="post">
+	<input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+	<label for="Text"> Post a Message</label>
+	<input type="text" name="message[message]">
+	<input type="submit" value="Submit">
+</form>
+
+
+
+<% @messages.each do |message| %>
+<div>
+<h4> <%= message.user.username %> - <%= message.created_at %> </h4>
+<h5> <%= message.message %> </h5>
+</div>
+<% end %>
+
+
+
